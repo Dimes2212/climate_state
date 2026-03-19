@@ -97,6 +97,7 @@
   .result-summary { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-top: 1px solid var(--border); margin-top: 12px; }
   .rs-vals { display: flex; align-items: center; gap: 10px; }
   .nav-row { display: flex; gap: 10px; }
+  .card-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; gap: 12px; }
   .footer { background: #111827; color: #6b7280; font-size: 12px; padding: 16px 40px; text-align: center; }
   .loading-overlay { position: fixed; inset: 0; background: rgba(255,255,255,0.92); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 100; opacity: 0; pointer-events: none; transition: opacity 0.2s; }
   .loading-overlay.show { opacity: 1; pointer-events: all; }
@@ -104,6 +105,110 @@
   @keyframes spin { to { transform: rotate(360deg); } }
   .loading-text { font-size: 15px; font-weight: 500; }
   .loading-step { font-size: 13px; color: var(--muted); margin-top: 6px; }
+
+  @media (max-width: 900px) {
+    .topbar, .main, .footer { padding-left: 20px; padding-right: 20px; }
+    .card { padding: 24px; }
+  }
+
+  @media (max-width: 700px) {
+    .topbar {
+      flex-wrap: wrap;
+      align-items: flex-start;
+      gap: 10px;
+      padding-top: 12px;
+      padding-bottom: 12px;
+    }
+    .topbar-name { font-size: 17px; }
+    .topbar-sub { font-size: 12px; }
+    .topbar-badge {
+      margin-left: 0;
+      width: 100%;
+      text-align: center;
+      margin-top: 2px;
+    }
+
+    .main { padding-top: 22px; padding-bottom: 24px; }
+    .card { padding: 18px 16px; border-radius: 14px; }
+    .grid2 { grid-template-columns: 1fr; gap: 12px; margin-bottom: 12px; }
+
+    .tabs {
+      overflow-x: auto;
+      gap: 6px;
+      padding: 4px;
+      white-space: nowrap;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .tabs::-webkit-scrollbar { display: none; }
+    .tab { flex: 0 0 auto; min-width: 150px; }
+
+    .score-wrap {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 14px;
+      padding-bottom: 14px;
+    }
+    .score-wrap svg { width: 88px; height: 88px; }
+
+    .risk-row {
+      flex-wrap: wrap;
+      row-gap: 8px;
+      column-gap: 10px;
+      align-items: center;
+    }
+    .risk-info { min-width: 0; }
+    .risk-track { flex: 1; min-width: 120px; width: auto; }
+    .risk-val { min-width: 42px; }
+
+    .fin-row {
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .fin-lbl { padding-right: 10px; }
+    .fin-val { text-align: right; }
+
+    .hbox-val { font-size: 20px; line-height: 1.3; }
+    .hbox-val span { font-size: 16px !important; }
+
+    .decision { flex-direction: column; gap: 10px; padding: 14px; }
+    .d-icon { width: 32px; height: 32px; font-size: 16px; }
+
+    .adapt-row {
+      flex-wrap: wrap;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .adapt-text { flex-basis: calc(100% - 20px); }
+    .adapt-effect, .adapt-row .tag { margin-left: 20px; }
+
+    .result-summary {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .rs-vals { flex-wrap: wrap; gap: 8px; }
+
+    .nav-row { flex-direction: column; }
+    .nav-row .btn-primary, .nav-row .btn-sec { width: 100%; }
+    .btn-primary, .btn-sec { min-height: 46px; }
+    .card-head { flex-direction: column; align-items: flex-start; }
+
+    .footer {
+      font-size: 11px;
+      line-height: 1.4;
+      padding-top: 12px;
+      padding-bottom: 12px;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .topbar, .main, .footer { padding-left: 12px; padding-right: 12px; }
+    .slabel { margin-bottom: 12px; }
+    .ring-tags { gap: 4px; }
+    .tag { font-size: 11px; padding: 3px 8px; }
+  }
 </style>
 </head>
 <body>
@@ -148,7 +253,7 @@
     <!-- ЭКРАН 2 -->
     <div class="screen" id="s2">
       <div class="card">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+        <div class="card-head">
           <div>
             <div style="font-size:15px;font-weight:600;">Краснодар, ул. Садовая, 12</div>
             <div style="font-size:13px;color:var(--muted);margin-top:2px;">Жилой · 12 400 000 ₽ · кредит 8 500 000 ₽</div>
@@ -222,7 +327,7 @@
         </div>
       </div>
       <div class="card">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+        <div class="card-head">
           <div class="slabel" style="margin:0;">Условия одобрения — меры адаптации</div>
           <span class="tag tag-success">−28% риска</span>
         </div>
